@@ -30,6 +30,9 @@ namespace UniversityRegistrar.Controllers
     {
       Department thisDepartment = _db.Departments.FirstOrDefault(department => department.DepartmentId == id);
 
+      List<Course> courses = _db.Courses.Where(course => course.DepartmentId == id).ToList();
+
+      thisDepartment.Courses = courses;
       return View(thisDepartment);
     }
 
@@ -40,6 +43,5 @@ namespace UniversityRegistrar.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
   }
 }

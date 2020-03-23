@@ -16,11 +16,12 @@
   }
   else
   {
-    <h4>Courses this student is taking:</h4>
+    <h4>Courses not completed:</h4>
     <ul>
     @foreach(var join in Model.Courses)
     {
-      <li class='join'>@join.Course.Name @join.IsComplete
+      if(!join.IsComplete) {
+        <li class='join'>@join.Course.Name
       @using (Html.BeginForm("EditCourse", "Students", FormMethod.Get))
       {
         @Html.Hidden("joinId", @join.CourseStudentId)
@@ -32,6 +33,17 @@
         <input type="submit" value="Delete" class='btn'/>
       }
       </li>
+      }
+    }
+    </ul>
+    <h4>Completed courses:</h4>
+    <ul>
+    @foreach(var join in Model.Courses)
+    {
+      if (join.IsComplete)
+      {
+        <li class='join'>@join.Course.Name</li>
+      }
     }
     </ul>
   }

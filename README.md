@@ -24,6 +24,7 @@
   - University Registrar initial set up linking courses and students with a many-to-many relationship
   - Adding in Departments with a one-to-many relationship to students and courses
   - Learning about data annotations to allow optional properties (e.g. when a student doesn't have a department yet)
+  - Adding additional features of IsComplete to courses
 </details>
 
 ## Description
@@ -54,7 +55,6 @@ C#/.NET MVC website that allows students and administrators to keep records on c
 - As a registrar, I want to change a student's file to show that they have completed a course, so that I can see if they need to take the course again.
 - As a registrar, I want to list out all of the courses a student has taken, so that I can see if they have met their degree requirements.
 - As a registrar, I want to see how many students have not completed courses in any particular departments, so that I can tell the administration which departments need help.
-- As a registrar, I want to …
 
 ## Known Bugs
 

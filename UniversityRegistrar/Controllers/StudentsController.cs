@@ -117,8 +117,6 @@ namespace UniversityRegistrar.Controllers
     public ActionResult EditCourse(int joinId, bool IsComplete)
     {
       var thisCourseStudent = _db.CourseStudent.FirstOrDefault(entries => entries.CourseStudentId == joinId);
-      // courseStudent = _db.CourseStudent.FirstOrDefault(courseStudent => courseStudent.CourseStudentId == joinId);
-      // thisCourseStudent.IsComplete =
 
       thisCourseStudent.IsComplete = IsComplete;
       _db.Entry(thisCourseStudent).State = EntityState.Modified;
