@@ -6,21 +6,25 @@
 
 <h1>Course Details</h1>
 
-<h2>@($"{Model.Name}{Model.Number}")</h2>
+<div class='content'>
+  <h2>@($"{Model.Name}{Model.Number}")</h2>
 
-@if(@Model.Students.Count == 0)
-{
-  <p>There are no students enrolled in this course</p>
-}
-else
-{
-  <h4>Students:</h4>
-  <ul>
-  @foreach(var student in ViewBag.Students)
+  @if(@Model.Students.Count == 0)
   {
-    <li>@student.Name</li>
+    <p>There are no students enrolled in this course</p>
   }
-  </ul>
-}
+  else
+  {
+    <h4>Students:</h4>
+    <ul>
+    @foreach(var student in ViewBag.Students)
+    {
+      <li>@student.Name</li>
+    }
+    </ul>
+  }
+</div>
 
-<p>@Html.ActionLink("Add Student", "AddStudent")</p>
+<div class='links'>
+  <p>@Html.ActionLink("Add Student", "AddStudent")</p>
+</div>
