@@ -15,8 +15,8 @@
     @Html.LabelFor(model => model.Number);
     @Html.EditorFor(model => model.Number, new { @type = "number" });
 
-    @* <label for="DepartmentId">Assign Department</label>
-    @Html.DropDownList("DepartmentId") *@
+    <label for="DepartmentId">Assign Department</label>
+    @Html.DropDownList("DepartmentId")
 
     <input type="submit" value="Add course" class="btn btn-default" />
   }
