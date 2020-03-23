@@ -18,7 +18,7 @@ namespace UniversityRegistrar.Controllers
       _db = db;
     }
 
-    public async Task<ActionResult> Index()
+    public ActionResult Index()
     {
       var userCourses = _db.Courses;
       return View(userCourses);
@@ -26,15 +26,13 @@ namespace UniversityRegistrar.Controllers
 
     public ActionResult Create()
     {
-      ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "Name");
+      // ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "Name");
       return View();
     }
 
     [HttpPost]
-    public async Task<ActionResult> Create(Course course)
+    public ActionResult Create(Course course)
     {
-      var currentUser = await _userManager.FindByIdAsync(userId);
-      course.User = currentUser;
       _db.Courses.Add(course);
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -70,7 +68,7 @@ namespace UniversityRegistrar.Controllers
     public ActionResult AddStudent(Course course, int StudentId)
     {
       if (StudentId != 0) {
-        _db.StudentCourse.Add(new StudentCourse() { CourseId = course.CourseId, StudentId = StudentId});
+        _db.CourseStudent.Add(new CourseStudent() { CourseId = course.CourseId, StudentId = StudentId});
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
