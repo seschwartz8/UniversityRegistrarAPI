@@ -7,7 +7,7 @@
 <h1>@Model.Name</h1>
 
 <div class='content'>
-  <h4>@Html.DisplayNameFor(model => model.EnrollmentDate): @Html.DisplayFor(model => model.EnrollmentDate)</h4>
+  <h4>Enrollment Date: @Html.DisplayFor(model => model.EnrollmentDate)</h4>
 
   @if(@Model.Courses.Count == 0)
   {
@@ -19,21 +19,20 @@
     <ul>
     @foreach(var join in Model.Courses)
     {
-      <li>@join.Course.Name</li>
-      @using (Html.BeginForm("DeleteCourse", "Items"))
+      <li class='join'>@join.Course.Name
+      @using (Html.BeginForm("RemoveCourse", "Students"))
       {
         @Html.Hidden("joinId", @join.CourseStudentId)
-        <input type="submit" value="Delete"/>
+        <input type="submit" value="Delete" class='btn'/>
       }
+      </li>
     }
     </ul>
   }
 </div>
 
-
 <div class="links">
   <p>@Html.ActionLink("Back to student list", "Index")</p>
-  @* <p>@Html.ActionLink("Edit Item", "Edit", new { id = Model.ItemId })</p> *@
   <p>@Html.ActionLink("Add a course", "AddCourse", new { id = Model.StudentId })</p>
-  @* <p>@Html.ActionLink("Delete Item", "Delete", new { id = Model.ItemId })</p> *@
+  <p>@Html.ActionLink("Delete student", "Delete", new { id = Model.StudentId })</p>
 </div>

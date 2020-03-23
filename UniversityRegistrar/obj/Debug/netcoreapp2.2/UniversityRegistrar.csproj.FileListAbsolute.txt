@@ -32,3 +32,6 @@ C:\Users\rache\desktop\projects\portfolio\university.solution\universityregistra
 C:\Users\rache\desktop\projects\portfolio\university.solution\universityregistrar\obj\Debug\netcoreapp2.2\UniversityRegistrar.dll
 C:\Users\rache\desktop\projects\portfolio\university.solution\universityregistrar\obj\Debug\netcoreapp2.2\UniversityRegistrar.pdb
 C:\Users\rache\desktop\projects\portfolio\university.solution\universityregistrar\obj\Debug\netcoreapp2.2\UniversityRegistrar.csproj.CopyComplete
+C:\Users\rache\desktop\projects\portfolio\university.solution\universityregistrar\obj\Debug\netcoreapp2.2\Razor\Views\Courses\Delete.cshtml.g.cs
+C:\Users\rache\desktop\projects\portfolio\university.solution\universityregistrar\obj\Debug\netcoreapp2.2\Razor\Views\Students\AddCourse.cshtml.g.cs
+C:\Users\rache\desktop\projects\portfolio\university.solution\universityregistrar\obj\Debug\netcoreapp2.2\Razor\Views\Students\Delete.cshtml.g.cs
