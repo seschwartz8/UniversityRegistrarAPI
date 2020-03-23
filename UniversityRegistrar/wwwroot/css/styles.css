@@ -32,8 +32,9 @@ a {
   font-size: 1.3em;
 }
 
-a:hover, a:active {
-  color: 	#6c6875;
+a:hover,
+a:active {
+  color: #6c6875;
   text-decoration: none;
 }
 
@@ -63,9 +64,9 @@ h1 {
   color: white;
 }
 
-/* .join {
-  width: 40%;
+.join {
+  min-width: 40%;
   border: 1px solid red;
   display: flex;
   justify-content: space-around;
-} */
+}

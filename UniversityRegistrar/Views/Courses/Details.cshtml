@@ -7,7 +7,7 @@
 <h1>Course Details</h1>
 
 <div class='content'>
-  <h2>@($"{Model.Name}{Model.Number}")</h2>
+  <h2>@($"{Model.Name}, {Model.Number}")</h2>
 
   @if(@Model.Students.Count == 0)
   {
