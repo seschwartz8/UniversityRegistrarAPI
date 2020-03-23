@@ -1,14 +1,14 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 using UniversityRegistrar.Models;
-
-using System.Threading.Tasks;
 
 namespace UniversityRegistrar.Controllers
 {
+
   public class CoursesController : Controller
   {
     private readonly UniversityRegistrarContext _db;
@@ -37,12 +37,13 @@ namespace UniversityRegistrar.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-    
+
     public ActionResult Delete(int id)
     {
-       Course thisCourse = _db.Courses.FirstOrDefault(course => course.CourseId == id);
+      Course thisCourse = _db.Courses.FirstOrDefault(course => course.CourseId == id);
       return View(thisCourse);
     }
+
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
@@ -71,8 +72,8 @@ namespace UniversityRegistrar.Controllers
     {
       var thisCourse = _db.Courses.FirstOrDefault(courses => courses.CourseId == id);
       var studentList = _db.Students
-      .Select(n => n)
-      .ToList();
+        .Select(n => n)
+        .ToList();
       ViewBag.StudentId = new SelectList(studentList, "StudentId", "Name");
       return View(thisCourse);
     }
@@ -80,8 +81,9 @@ namespace UniversityRegistrar.Controllers
     [HttpPost]
     public ActionResult AddStudent(Course course, int StudentId)
     {
-      if (StudentId != 0) {
-        _db.CourseStudent.Add(new CourseStudent() { CourseId = course.CourseId, StudentId = StudentId});
+      if (StudentId != 0)
+      {
+        _db.CourseStudent.Add(new CourseStudent() { CourseId = course.CourseId, StudentId = StudentId });
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
