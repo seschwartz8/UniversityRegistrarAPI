@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@model UniversityRegistrar.Models.Course;
+
+<h1>Course Details</h1>
+
+<h2>@($"{Model.Name}{Model.Number}")</h2>
+
+@if(@Model.Students.Count == 0)
+{
+  <p>There are no students enrolled in this course</p>
+}
+else
+{
+  <h4>Students:</h4>
+  <ul>
+  @foreach(var student in ViewBag.Students)
+  {
+    <li>@student.Name</li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Add Student", "AddStudent")</p>

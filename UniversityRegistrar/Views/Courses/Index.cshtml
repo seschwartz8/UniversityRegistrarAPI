@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@using UniversityRegistrar.Models;
+@model IEnumerable<UniversityRegistrar.Models.Course>
+
+<h1>Course Directory</h1>
+
+@if(Model.Any())
+{
+  <ul>
+  @foreach(Course course in Model)
+  {
+    <li>@Html.ActionLink($"{course.Name}{course.Number}", "Details", new { id = course.CourseId })</li>
+  }
+  </ul>
+}
+else
+{
+    <h3>No courses made by you</h3>
+}
+
+<p>@Html.ActionLink("Add Course", "Create")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
