@@ -13,8 +13,8 @@ namespace UniversityRegistrar
     public Startup(IHostingEnvironment env)
     {
       var builder = new ConfigurationBuilder()
-          .SetBasePath(env.ContentRootPath)
-          .AddJsonFile("appsettings.json");
+        .SetBasePath(env.ContentRootPath)
+        .AddJsonFile("appsettings.json");
       Configuration = builder.Build();
     }
 
@@ -26,7 +26,7 @@ namespace UniversityRegistrar
 
       services.AddEntityFrameworkSqlServer()
         .AddDbContext<UniversityRegistrarContext>(options => options
-        .UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+          .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
     }
 
     public void Configure(IApplicationBuilder app)
@@ -44,7 +44,7 @@ namespace UniversityRegistrar
           template: "{controller=Home}/{action=Index}/{id?}");
       });
 
-      app.Run(async (context) =>
+      app.Run(async(context) =>
       {
         await context.Response.WriteAsync("Something went wrong!");
       });
