@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@model UniversityRegistrar.Models.CourseStudent
+
+<h1>Edit course</h1>
+
+<div class='content'>
+  <h4>@ViewBag.CourseName</h4>
+
+  @using (Html.BeginForm())
+  {
+    @Html.HiddenFor(model => model.CourseStudentId)
+
+    @Html.Label("Course complete")
+    @Html.DropDownList("IsComplete")
+
+    <input type="submit" value="Save" class='btn'/>
+  }
+</div>
+
+<div class='links'>
+  <p>@Html.ActionLink("Back to student list", "Index")</p>
+</div>
+

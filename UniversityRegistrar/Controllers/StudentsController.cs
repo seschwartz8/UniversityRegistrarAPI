@@ -96,6 +96,37 @@ namespace UniversityRegistrar.Controllers
       return RedirectToAction("Index");
     }
 
+    public ActionResult EditCourse(int joinId)
+    {
+      CourseStudent thisCourseStudent = _db.CourseStudent.FirstOrDefault(courseStudent => courseStudent.CourseStudentId == joinId);
+
+      Course thisCourse = _db.Courses.FirstOrDefault(course => course.CourseId == thisCourseStudent.CourseId);
+      ViewBag.CourseName = thisCourse.Name;
+      SelectListItem item1 = new SelectListItem();
+      item1.Text = "True";
+      item1.Value = "true";
+      SelectListItem item2 = new SelectListItem();
+      item2.Text = "False";
+      item2.Value = "false";
+      ViewBag.IsComplete = new List<SelectListItem>() { item1, item2 };
+
+      return View(thisCourseStudent);
+    }
+
+    [HttpPost]
+    public ActionResult EditCourse(int joinId, bool IsComplete)
+    {
+      var thisCourseStudent = _db.CourseStudent.FirstOrDefault(entries => entries.CourseStudentId == joinId);
+      // courseStudent = _db.CourseStudent.FirstOrDefault(courseStudent => courseStudent.CourseStudentId == joinId);
+      // thisCourseStudent.IsComplete =
+
+      thisCourseStudent.IsComplete = IsComplete;
+      _db.Entry(thisCourseStudent).State = EntityState.Modified;
+      _db.SaveChanges();
+
+      return RedirectToAction("Index");
+    }
+
     public ActionResult Edit(int id)
     {
       var thisStudent = _db.Students.FirstOrDefault(students => students.StudentId == id);

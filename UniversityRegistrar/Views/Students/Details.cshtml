@@ -20,7 +20,12 @@
     <ul>
     @foreach(var join in Model.Courses)
     {
-      <li class='join'>@join.Course.Name
+      <li class='join'>@join.Course.Name @join.IsComplete
+      @using (Html.BeginForm("EditCourse", "Students", FormMethod.Get))
+      {
+        @Html.Hidden("joinId", @join.CourseStudentId)
+        <input type="submit" value="EditCourse" class='btn'/>
+      }
       @using (Html.BeginForm("RemoveCourse", "Students"))
       {
         @Html.Hidden("joinId", @join.CourseStudentId)
