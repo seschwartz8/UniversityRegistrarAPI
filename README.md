@@ -72,3 +72,4 @@ Student
 
 Parking lot
 -Student maximum in each course
+-Different views of pages for different users (e.g. Student edit looks different to student vs registrar)

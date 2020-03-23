@@ -19,3 +19,8 @@ else
     <p>@Html.ActionLink(($"{course.Name}{course.Number}"), "Details", "Courses", new { id = course.CourseId})</p>
   }
 }
+
+<div class='links'>
+  <p>@Html.ActionLink("View Departments", "Index")</p>
+  <p>@Html.ActionLink("Home", "Index", "Home")</p>
+</div>

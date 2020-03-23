@@ -2,7 +2,7 @@
   Layout = "_Layout";
 }
 
-@model UniversityRegistrar.Models.Course;
+@model UniversityRegistrar.Models.Department
 
 <h1>Add Department</h1>
 
@@ -12,8 +12,8 @@
     @Html.LabelFor(model => model.Name);
     @Html.TextBoxFor(model => model.Name);
 
-    @Html.LabelFor(model => model.Number);
-    @Html.EditorFor(model => model.Number, new { @type = "number" });
+    @* @Html.LabelFor(model => model.Number);
+    @Html.EditorFor(model => model.Number, new { @type = "number" }); *@
 
     @* <label for="DepartmentId">Assign Department</label>
     @Html.DropDownList("DepartmentId") *@

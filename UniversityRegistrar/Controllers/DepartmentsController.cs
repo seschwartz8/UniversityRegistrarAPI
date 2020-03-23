@@ -1,8 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 using UniversityRegistrar.Models;
 
 namespace UniversityRegistrar.Controllers
@@ -26,6 +26,13 @@ namespace UniversityRegistrar.Controllers
       return View();
     }
 
+    public ActionResult Details(int id)
+    {
+      Department thisDepartment = _db.Departments.FirstOrDefault(department => department.DepartmentId == id);
+
+      return View(thisDepartment);
+    }
+
     [HttpPost]
     public ActionResult Create(Department department)
     {
@@ -34,6 +41,5 @@ namespace UniversityRegistrar.Controllers
       return RedirectToAction("Index");
     }
 
-    
   }
 }

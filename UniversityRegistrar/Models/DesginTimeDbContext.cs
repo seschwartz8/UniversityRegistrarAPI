@@ -23,4 +23,5 @@ namespace UniversityRegistrar.Models
       return new UniversityRegistrarContext(builder.Options);
     }
   }
+
 }

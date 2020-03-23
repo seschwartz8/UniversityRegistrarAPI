@@ -1,11 +1,10 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 using UniversityRegistrar.Models;
-
-using System.Threading.Tasks;
 
 namespace UniversityRegistrar.Controllers
 {
@@ -44,6 +43,11 @@ namespace UniversityRegistrar.Controllers
         .Include(student => student.Courses)
         .ThenInclude(join => join.Course)
         .FirstOrDefault(student => student.StudentId == id);
+      if (thisStudent.DepartmentId != null)
+      {
+        var thisDepartment = _db.Departments.FirstOrDefault(departments => departments.DepartmentId == thisStudent.DepartmentId);
+        ViewBag.DepartmentName = thisDepartment.Name;
+      }
       return View(thisStudent);
     }
 
@@ -51,8 +55,8 @@ namespace UniversityRegistrar.Controllers
     {
       var thisStudent = _db.Students.FirstOrDefault(students => students.StudentId == id);
       var courseList = _db.Courses
-      .Select(n => n)
-      .ToList();
+        .Select(n => n)
+        .ToList();
       ViewBag.CourseId = new SelectList(courseList, "CourseId", "Name");
       return View(thisStudent);
     }
@@ -60,13 +64,13 @@ namespace UniversityRegistrar.Controllers
     [HttpPost]
     public ActionResult AddCourse(Student student, int CourseId)
     {
-      if (CourseId != 0) {
-        _db.CourseStudent.Add(new CourseStudent() { StudentId = student.StudentId, CourseId = CourseId});
+      if (CourseId != 0)
+      {
+        _db.CourseStudent.Add(new CourseStudent() { StudentId = student.StudentId, CourseId = CourseId });
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
 
     public ActionResult Delete(int id)
     {
@@ -91,6 +95,22 @@ namespace UniversityRegistrar.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult Edit(int id)
+    {
+      var thisStudent = _db.Students.FirstOrDefault(students => students.StudentId == id);
+      ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "Name");
+      return View(thisStudent);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Student student, int DepartmentId)
+    {
+      student.DepartmentId = DepartmentId;
+      _db.Entry(student).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
-  
+
 }
