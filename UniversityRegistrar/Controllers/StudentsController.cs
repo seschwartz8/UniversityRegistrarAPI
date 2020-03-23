@@ -18,7 +18,7 @@ namespace UniversityRegistrar.Controllers
       _db = db;
     }
 
-    public async Task<ActionResult> Index()
+    public ActionResult Index()
     {
       List<Student> model = _db.Students.ToList();
       return View(model);
@@ -31,7 +31,7 @@ namespace UniversityRegistrar.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult> Create(Student student)
+    public ActionResult Create(Student student)
     {
       _db.Students.Add(student);
       _db.SaveChanges();
@@ -40,36 +40,28 @@ namespace UniversityRegistrar.Controllers
 
     public ActionResult Details(int id)
     {
-      Course thisCourse = _db.Courses
-        .Include(course => course.Students)
-        .ThenInclude(join => join.Student)
-        .FirstOrDefault(course => course.CourseId == id);
-
-      var thisStudent = _db.Students
-        .Include(item => item.Categories)
-        .ThenInclude(join => join.Category)
-        .FirstOrDefault(item => item.ItemId == id);
-      return View(thisItem);
-
-      ViewBag.Students = students;
-      return View(thisCourse);
+      Student thisStudent = _db.Students
+        .Include(student => student.Courses)
+        .ThenInclude(join => join.Course)
+        .FirstOrDefault(student => student.StudentId == id);
+      return View(thisStudent);
     }
 
-    public ActionResult AddStudent(int id)
+    public ActionResult AddCourse(int id)
     {
-      var thisCourse = _db.Courses.FirstOrDefault(courses => courses.CourseId == id);
-      var studentList = _db.Students
+      var thisStudent = _db.Students.FirstOrDefault(students => students.StudentId == id);
+      var courseList = _db.Courses
       .Select(n => n)
       .ToList();
-      ViewBag.StudentId = new SelectList(studentList, "StudentId", "Name");
-      return View(thisCourse);
+      ViewBag.CourseId = new SelectList(courseList, "CourseId", "Name");
+      return View(thisStudent);
     }
 
     [HttpPost]
-    public ActionResult AddStudent(Course course, int StudentId)
+    public ActionResult AddCourse(Student student, int CourseId)
     {
-      if (StudentId != 0) {
-        _db.StudentCourse.Add(new StudentCourse() { CourseId = course.CourseId, StudentId = StudentId});
+      if (CourseId != 0) {
+        _db.CourseStudent.Add(new CourseStudent() { StudentId = student.StudentId, CourseId = CourseId});
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
