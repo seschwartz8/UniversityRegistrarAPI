@@ -6,8 +6,8 @@ namespace UniversityRegistrar.Models
   {
     public Department()
     {
-      this.Courses = new HashSet<Course> {};
-      this.Students = new HashSet<Student> {};
+      this.Courses = new HashSet<Course> { };
+      this.Students = new HashSet<Student> { };
     }
     public int DepartmentId { get; set; }
     public string Name { get; set; }

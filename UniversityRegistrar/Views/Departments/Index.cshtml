@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+
+@using UniversityRegistrar.Models;
+@model IEnumerable<UniversityRegistrar.Models.Department>
+
+<h1>Departments</h1>
+
+<div class='content'>
+  @if (Model.Any())
+  {
+    <ul>
+      @foreach (Department department in Model)
+      {
+       <p>@Html.ActionLink($"{department.Name}", "Details", new { id = department.DepartmentId})</p>
+      }
+    </ul>
+  } 
+  else
+  {
+    <h2>No departments have been added yet</h2>
+  }
+</div>
+
+<div class='links'>
+  <p>@Html.ActionLink("Add new department", "Create")</p>
+  <p>@Html.ActionLink("Home", "Index", "Home")</p>
+</div>

@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model UniversityRegistrar.Models.Department;
+
+<h1>Department Details</h1>
+
+<h2>Name: @($"{Model.Name}")</h2>
+@if(Model.Courses.Count == 0)
+{
+  <p>There are no courses for this department</p>
+}
+else
+{
+  <h3>Courses</h3>
+  @foreach(var course in Model.Courses)
+  {
+    <p>@Html.ActionLink(($"{course.Name}{course.Number}"), "Details", "Courses", new { id = course.CourseId})</p>
+  }
+}
