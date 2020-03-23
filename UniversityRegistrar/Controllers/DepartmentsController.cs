@@ -30,7 +30,7 @@ namespace UniversityRegistrar.Controllers
     {
       Department thisDepartment = _db.Departments.FirstOrDefault(department => department.DepartmentId == id);
 
-      List<Course> courses = _db.Courses.Where(course => course.DepartmentId == id).ToList();
+      List<Course> courses = _db.Courses.Where(course => course.DepartmentId == id).OrderBy(course => course.Name).ToList();
 
       thisDepartment.Courses = courses;
       return View(thisDepartment);

@@ -1,4 +1,4 @@
-# Best Restaurant
+# University Registrar
 
 #### C#/.NET MVC website that allows students and administrators to keep records on courses and student enrollment.
 
@@ -11,10 +11,9 @@
 1. [Description](#description)
 2. [Setup/Installation Requirements](#installation-requirements)
 3. [User Stories](#user-stories)
-4. [Specifications](#specs)
-5. [Known Bugs](#known-bugs)
-6. [Technologies Used](#technologies-used)
-7. [License](#license)
+4. [Known Bugs](#known-bugs)
+5. [Technologies Used](#technologies-used)
+6. [License](#license)
 
 ---
 
@@ -25,6 +24,8 @@
   - Adding in Departments with a one-to-many relationship to students and courses
   - Learning about data annotations to allow optional properties (e.g. when a student doesn't have a department yet)
   - Adding additional features of IsComplete to courses
+  - Listing out courses a student is completing vs. has completed
+  - Learning about seeding databases, but still struggling with seeding sequentially (are they async?)
 </details>
 
 ## Description
@@ -55,6 +56,7 @@ C#/.NET MVC website that allows students and administrators to keep records on c
 - As a registrar, I want to change a student's file to show that they have completed a course, so that I can see if they need to take the course again.
 - As a registrar, I want to list out all of the courses a student has taken, so that I can see if they have met their degree requirements.
 - As a registrar, I want to see how many students have not completed courses in any particular departments, so that I can tell the administration which departments need help.
+- As a registrar, I want to all courses on the course page and within the department pages ordered alphabetically
 
 ## Known Bugs
 

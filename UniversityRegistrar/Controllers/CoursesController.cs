@@ -20,7 +20,7 @@ namespace UniversityRegistrar.Controllers
 
     public ActionResult Index()
     {
-      var userCourses = _db.Courses;
+      List<Course> userCourses = _db.Courses.OrderBy(course => course.Name).ToList();
       return View(userCourses);
     }
 
