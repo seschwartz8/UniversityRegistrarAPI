@@ -72,7 +72,6 @@ namespace UniversityRegistrar.Controllers
       IdentityResult result = await _userManager.CreateAsync(user, model.Password);
       if (result.Succeeded)
       {
-        // await _userManager.AddClaimAsync(user, new Claim(""));
         return RedirectToAction("Index");
       }
       else
