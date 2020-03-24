@@ -8,29 +8,36 @@
 <h1>Students in the department</h1>
 
 <div class='content'>
-  @* @if (Model.Any())
+  @if (Model.Any())
   {
+    <h4>Incomplete Coursework Within Department:</h4>
     <ul>
-      @foreach (CourseStudent join in Model)
+      @foreach (CourseCourseStudent course in Model)
       {
-        <p>@join.IsComplete</p>
-        <p>@join.CourseStudentId</p>
+        if (course.IsComplete == false)
+        {
+          <p>Student Name: @course.StudentName</p>
+          <p>Course: @course.CourseName</p>
+        }
+      }
+    </ul>
+    <h4>Completed Coursework Within Department:</h4>
+    <ul>
+      @foreach (CourseCourseStudent course in Model)
+      {
+        if (course.IsComplete == true)
+        {
+          <p>Student Name: @course.StudentName</p>
+          <p>Course: @course.CourseName</p>
+        }
       }
     </ul>
   } 
   else
   {
-    <h2>No courses have been completed yet</h2>
-  } *@
- @* <p>Department: @Model.Name</p> *@
+    <h2>No students have coursework in this department</h2>
+  }
 
-@foreach (CourseCourseStudent course in Model) 
-{
-  <p>Course: @course.CourseName</p>
-  <p>Completed: @course.IsComplete</p>
-  <p>Student Name: @course.StudentName</p>
-
-}
 
 <div class='links'>
   @* <p>@Html.ActionLink("Back to department", "Details", new {id = Model.DepartmentId})</p> *@
