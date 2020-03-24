@@ -14,5 +14,6 @@ namespace UniversityRegistrar.Models
     public string Name { get; set; }
     public int Number { get; set; }
     public ICollection<CourseStudent> Students { get; set; }
+    public virtual ApplicationUser User { get; set; }
   }
 }

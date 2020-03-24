@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UniversityRegistrar.Models;
 
 namespace UniversityRegistrar.Migrations
 {
     [DbContext(typeof(UniversityRegistrarContext))]
-    partial class UniversityRegistrarContextModelSnapshot : ModelSnapshot
+    [Migration("20200324202018_addIdentity")]
+    partial class addIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -185,13 +187,9 @@ namespace UniversityRegistrar.Migrations
 
                     b.Property<int>("Number");
 
-                    b.Property<string>("UserId");
-
                     b.HasKey("CourseId");
 
                     b.HasIndex("DepartmentId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Courses");
                 });
@@ -223,11 +221,7 @@ namespace UniversityRegistrar.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("UserId");
-
                     b.HasKey("DepartmentId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Departments");
                 });
@@ -245,13 +239,9 @@ namespace UniversityRegistrar.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("UserId");
-
                     b.HasKey("StudentId");
 
                     b.HasIndex("DepartmentId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Students");
                 });
@@ -307,10 +297,6 @@ namespace UniversityRegistrar.Migrations
                         .WithMany("Courses")
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("UniversityRegistrar.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("UniversityRegistrar.Models.CourseStudent", b =>
@@ -326,22 +312,11 @@ namespace UniversityRegistrar.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("UniversityRegistrar.Models.Department", b =>
-                {
-                    b.HasOne("UniversityRegistrar.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-                });
-
             modelBuilder.Entity("UniversityRegistrar.Models.Student", b =>
                 {
                     b.HasOne("UniversityRegistrar.Models.Department", "Department")
                         .WithMany("Students")
                         .HasForeignKey("DepartmentId");
-
-                    b.HasOne("UniversityRegistrar.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

@@ -114,3 +114,6 @@ C:/Users/rache/desktop/projects/portfolio/university.solution/universityregistra
 /Users/Sarah Schwartz/Desktop/EPICODUS/Projects/UniversityRegistrar.Solution/UniversityRegistrar.Solution/obj/Debug/netcoreapp2.2/UniversityRegistrar.pdb
 /Users/Sarah Schwartz/Desktop/EPICODUS/Projects/UniversityRegistrar.Solution/UniversityRegistrar.Solution/obj/Debug/netcoreapp2.2/UniversityRegistrar.csproj.CopyComplete
 /Users/Sarah Schwartz/Desktop/EPICODUS/Projects/UniversityRegistrar.Solution/UniversityRegistrar.Solution/obj/Debug/netcoreapp2.2/Razor/Views/Departments/GetStudents.g.cshtml.cs
+/Users/Sarah Schwartz/Desktop/EPICODUS/Projects/UniversityRegistrar.Solution/UniversityRegistrar.Solution/obj/Debug/netcoreapp2.2/Razor/Views/Account/Index.g.cshtml.cs
+/Users/Sarah Schwartz/Desktop/EPICODUS/Projects/UniversityRegistrar.Solution/UniversityRegistrar.Solution/obj/Debug/netcoreapp2.2/Razor/Views/Account/Login.g.cshtml.cs
+/Users/Sarah Schwartz/Desktop/EPICODUS/Projects/UniversityRegistrar.Solution/UniversityRegistrar.Solution/obj/Debug/netcoreapp2.2/Razor/Views/Account/Register.g.cshtml.cs

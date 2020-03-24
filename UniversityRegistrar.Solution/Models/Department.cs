@@ -14,5 +14,6 @@ namespace UniversityRegistrar.Models
     // public string DepartmentChair { get; set; }
     public virtual ICollection<Course> Courses { get; set; }
     public virtual ICollection<Student> Students { get; set; }
+    public virtual ApplicationUser User { get; set; }
   }
 }

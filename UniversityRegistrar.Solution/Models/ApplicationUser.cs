@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace BestRestaurant.Models
+namespace UniversityRegistrar.Models
 {
   public class ApplicationUser : IdentityUser
   {

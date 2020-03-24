@@ -18,8 +18,6 @@ namespace UniversityRegistrar.Models
         [Column(TypeName = "nvarchar(100)")]
         public string Name { get; set; }
 
-        // [DataType(DataType.Date)]
-        // [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Column(TypeName = "nvarchar(20)")]
         public string EnrollmentDate { get; set; }
 
@@ -28,5 +26,6 @@ namespace UniversityRegistrar.Models
         public virtual Department Department { get; set; }
 
         public virtual ICollection<CourseStudent> Courses { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }

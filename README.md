@@ -21,7 +21,7 @@
   <summary>WHAT WE WORKED ON 03.24.20</summary>
   
   - Removed excess seeding to avoid foreign key constraint errors
-  - Struggle for a few hours to get the students that have/have not completed courses in a specific department to show on a department view
+  - Spend a few hours to get the students that have/have not completed courses in a specific department to show on a department view
 </details>
 
 <details>
