@@ -46,6 +46,10 @@ a:active {
   font-size: 1.2em;
 }
 
+.btn:hover {
+  color: #cbc9cf;
+}
+
 .links {
   width: 100%;
   margin-top: 5%;
@@ -65,8 +69,7 @@ h1 {
 }
 
 .join {
-  min-width: 40%;
-  border: 1px solid red;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }

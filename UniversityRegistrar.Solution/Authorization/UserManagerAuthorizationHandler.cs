@@ -6,13 +6,13 @@
 
 // namespace UniversityRegistrar.Authorization
 // {
-//   public class ContactManagerAuthorizationHandler:
-//     AuthorizationHandler<OperationAuthorizationRequirement, Contact>
+//   public class UserManagerAuthorizationHandler:
+//     AuthorizationHandler<OperationAuthorizationRequirement, ApplicationUser>
 //     {
 //       protected override Task
 //       HandleRequirementAsync(AuthorizationHandlerContext context,
 //         OperationAuthorizationRequirement requirement,
-//         Contact resource)
+//         ApplicationUser resource)
 //       {
 //         if (context.User == null || resource == null)
 //         {
