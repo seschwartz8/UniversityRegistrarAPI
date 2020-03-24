@@ -18,6 +18,13 @@
 ---
 
 <details>
+  <summary>WHAT WE WORKED ON 03.24.20</summary>
+  
+  - Removed excess seeding to avoid foreign key constraint errors
+  - Struggle for a few hours to get the students that have/have not completed courses in a specific department to show on a department view
+</details>
+
+<details>
   <summary>WHAT WE WORKED ON 03.23.20</summary>
   
   - University Registrar initial set up linking courses and students with a many-to-many relationship
@@ -56,7 +63,7 @@ C#/.NET MVC website that allows students and administrators to keep records on c
 - As a registrar, I want to change a student's file to show that they have completed a course, so that I can see if they need to take the course again.
 - As a registrar, I want to list out all of the courses a student has taken, so that I can see if they have met their degree requirements.
 - As a registrar, I want to see how many students have not completed courses in any particular departments, so that I can tell the administration which departments need help.
-- As a registrar, I want to all courses on the course page and within the department pages ordered alphabetically
+- As a registrar, I want to all courses on the course page and within the department pages ordered alphabetically.
 
 ## Known Bugs
 

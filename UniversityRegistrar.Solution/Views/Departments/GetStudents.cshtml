@@ -1,0 +1,38 @@
+@{
+  Layout = "_Layout";
+}
+
+@using UniversityRegistrar.Models;
+@* @model UniversityRegistrar.Models.Department; *@
+@model IEnumerable<UniversityRegistrar.Models.CourseCourseStudent>;
+<h1>Students in the department</h1>
+
+<div class='content'>
+  @* @if (Model.Any())
+  {
+    <ul>
+      @foreach (CourseStudent join in Model)
+      {
+        <p>@join.IsComplete</p>
+        <p>@join.CourseStudentId</p>
+      }
+    </ul>
+  } 
+  else
+  {
+    <h2>No courses have been completed yet</h2>
+  } *@
+ @* <p>Department: @Model.Name</p> *@
+
+@foreach (CourseCourseStudent course in Model) 
+{
+  <p>Course: @course.CourseName</p>
+  <p>Completed: @course.IsComplete</p>
+  <p>Student Name: @course.StudentName</p>
+
+}
+
+<div class='links'>
+  @* <p>@Html.ActionLink("Back to department", "Details", new {id = Model.DepartmentId})</p> *@
+  <p>@Html.ActionLink("Home", "Index", "Home")</p>
+</div>
