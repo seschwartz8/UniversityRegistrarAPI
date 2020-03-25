@@ -30,8 +30,8 @@ namespace UniversityRegistrar.Models
       context.SaveChanges();
     }
   }
-
-  public class UniversityRegistrarContext : IdentityDbContext<ApplicationUser>
+  // : IdentityDbContext<ApplicationUser>
+  public class UniversityRegistrarContext
   {
     public DbSet<Course> Courses { get; set; }
     public DbSet<Student> Students { get; set; }
