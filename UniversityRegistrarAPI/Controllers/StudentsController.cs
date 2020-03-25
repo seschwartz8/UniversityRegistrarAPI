@@ -69,6 +69,8 @@ namespace UniversityRegistrar.Controllers
     [HttpPost]
     public async Task<ActionResult<Student>> PostStudent(Student student)
     {
+      System.Console.WriteLine("STUDENT BELOW__________________________________");
+      System.Console.WriteLine(student.Name);
       _context.Students.Add(student);
       await _context.SaveChangesAsync();
 

@@ -20,7 +20,7 @@ export const fetchAll = () => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const create = (data, onSuccess) => dispatch => {
+export const create = data => dispatch => {
   api
     .student()
     .create(data)
@@ -29,12 +29,11 @@ export const create = (data, onSuccess) => dispatch => {
         type: ACTION_TYPES.CREATE,
         payload: res.data
       });
-      onSuccess();
     })
     .catch(err => console.log(err));
 };
 
-export const update = (id, data, onSuccess) => dispatch => {
+export const update = (id, data) => dispatch => {
   api
     .student()
     .update(id, data)
@@ -43,12 +42,11 @@ export const update = (id, data, onSuccess) => dispatch => {
         type: ACTION_TYPES.UPDATE,
         payload: { id, ...data }
       });
-      onSuccess();
     })
     .catch(err => console.log(err));
 };
 
-export const Delete = (id, onSuccess) => dispatch => {
+export const Delete = id => dispatch => {
   api
     .student()
     .delete(id)
@@ -57,7 +55,6 @@ export const Delete = (id, onSuccess) => dispatch => {
         type: ACTION_TYPES.DELETE,
         payload: id
       });
-      onSuccess();
     })
     .catch(err => console.log(err));
 };
