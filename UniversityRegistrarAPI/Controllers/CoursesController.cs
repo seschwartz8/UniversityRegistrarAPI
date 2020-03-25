@@ -1,93 +1,103 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using UniversityRegistrar.Models;
 
 namespace UniversityRegistrar.Controllers
 {
+  [Route("[controller]")]
   public class CoursesController : Controller
   {
-    private readonly UniversityRegistrarContext _db;
+    private readonly UniversityRegistrarContext _context;
 
-    public CoursesController(UniversityRegistrarContext db)
+    public CoursesController(UniversityRegistrarContext context)
     {
-      _db = db;
+      _context = context;
     }
 
-    public ActionResult Index()
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Course>>> GetCourses()
     {
-      List<Course> userCourses = _db.Courses.OrderBy(course => course.Name).ToList();
-      return View(userCourses);
+      return await _context.Courses.OrderBy(course => course.Name).ToListAsync();
     }
 
-    public ActionResult Create()
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Course>> GetCourse(int id)
     {
-      ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "Name");
-      return View();
-    }
+      var course = await _context.Courses.FindAsync(id);
 
-    [HttpPost]
-    public ActionResult Create(Course course)
-    {
-      _db.Courses.Add(course);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
-    }
-
-    public ActionResult Delete(int id)
-    {
-      Course thisCourse = _db.Courses.FirstOrDefault(course => course.CourseId == id);
-      return View(thisCourse);
-    }
-
-    [HttpPost, ActionName("Delete")]
-    public ActionResult DeleteConfirmed(int id)
-    {
-      var thisCourse = _db.Courses.FirstOrDefault(courses => courses.CourseId == id);
-      _db.Courses.Remove(thisCourse);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
-    }
-    public ActionResult Details(int id)
-    {
-      Course thisCourse = _db.Courses
-        .Include(course => course.Students)
-        .ThenInclude(join => join.Student)
-        .FirstOrDefault(course => course.CourseId == id);
-
-      List<Student> students = thisCourse.Students
-        .Select(student => student.Student)
-        .OrderBy(student => student.Name)
-        .ToList();
-
-      ViewBag.Students = students;
-      return View(thisCourse);
-    }
-
-    public ActionResult AddStudent(int id)
-    {
-      var thisCourse = _db.Courses.FirstOrDefault(courses => courses.CourseId == id);
-      var studentList = _db.Students
-        .Select(n => n)
-        .ToList();
-      ViewBag.StudentId = new SelectList(studentList, "StudentId", "Name");
-      return View(thisCourse);
-    }
-
-    [HttpPost]
-    public ActionResult AddStudent(Course course, int StudentId)
-    {
-      if (StudentId != 0)
+      if (course == null)
       {
-        _db.CourseStudent.Add(new CourseStudent() { CourseId = course.CourseId, StudentId = StudentId });
+        return NotFound();
       }
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+
+      // List<Student> students = thisCourse.Students
+      //   .Select(student => student.Student)
+      //   .OrderBy(student => student.Name)
+      //   .ToList();
+
+      // ViewBag.Students = students;
+
+      return course;
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutCourse(int id, Course course)
+    {
+      course.CourseId = id;
+
+      _context.Entry(course).State = EntityState.Modified;
+
+      try
+      {
+        await _context.SaveChangesAsync();
+      }
+      catch (DbUpdateConcurrencyException)
+      {
+        if (!CourseExists(id))
+        {
+          return NotFound();
+        }
+        else
+        {
+          throw;
+        }
+      }
+
+      return NoContent();
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<Course>> PostCourse(Course course)
+    {
+      _context.Courses.Add(course);
+      await _context.SaveChangesAsync();
+
+      return CreatedAtAction("GetCourse", new { id = course.CourseId }, course);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<Course>> DeleteCourse(int id)
+    {
+      var course = await _context.Courses.FindAsync(id);
+      if (course == null)
+      {
+        return NotFound();
+      }
+
+      _context.Courses.Remove(course);
+      await _context.SaveChangesAsync();
+
+      return course;
+    }
+
+    private bool CourseExists(int id)
+    {
+      return _context.Courses.Any(e => e.CourseId == id);
     }
   }
 }
