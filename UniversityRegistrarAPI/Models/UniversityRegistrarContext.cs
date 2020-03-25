@@ -1,5 +1,4 @@
 using System.Linq;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace UniversityRegistrar.Models
@@ -30,8 +29,7 @@ namespace UniversityRegistrar.Models
       context.SaveChanges();
     }
   }
-  // : IdentityDbContext<ApplicationUser>
-  public class UniversityRegistrarContext
+  public class UniversityRegistrarContext : DbContext
   {
     public DbSet<Course> Courses { get; set; }
     public DbSet<Student> Students { get; set; }

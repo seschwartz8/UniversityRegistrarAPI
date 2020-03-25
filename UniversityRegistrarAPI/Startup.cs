@@ -16,7 +16,7 @@ namespace UniversityRegistrar
 {
   public class Startup
   {
-    public IConfigurationRoot Configuration { get; set; }
+    public IConfiguration Configuration { get; set; }
 
     public Startup(IConfiguration configuration)
     {
@@ -32,19 +32,9 @@ namespace UniversityRegistrar
         options.UseMySql(Configuration.GetConnectionString("DevConnection")));
 
       services.AddCors();
-
-      // services.Configure<IdentityOptions>(options =>
-      // {
-      //   options.Password.RequireDigit = false;
-      //   options.Password.RequiredLength = 0;
-      //   options.Password.RequireLowercase = false;
-      //   options.Password.RequireNonAlphanumeric = false;
-      //   options.Password.RequireUppercase = false;
-      //   options.Password.RequiredUniqueChars = 0;
-      // });
     }
 
-    public void Configure(IApplicationBuilder app, , IWebHostIHostingEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
       app.UseCors(options =>
         options.WithOrigins("http://localhost:3000")
@@ -57,8 +47,6 @@ namespace UniversityRegistrar
       }
 
       app.UseRouting();
-
-      app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>
       {

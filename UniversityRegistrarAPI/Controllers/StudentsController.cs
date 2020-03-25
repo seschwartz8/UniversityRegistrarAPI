@@ -3,7 +3,6 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,11 +10,9 @@ using UniversityRegistrar.Models;
 
 namespace UniversityRegistrar.Controllers
 {
-  [Authorize]
   public class StudentsController : Controller
   {
     private readonly UniversityRegistrarContext _db;
-    // private readonly UserManager<ApplicationUser> _userManager;
 
     public StudentsController(UniversityRegistrarContext db)
     {
