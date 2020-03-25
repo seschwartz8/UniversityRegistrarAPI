@@ -16,7 +16,7 @@ namespace UniversityRegistrar.Models
         .Build();
 
       var builder = new DbContextOptionsBuilder<UniversityRegistrarContext>();
-      var connectionString = configuration.GetConnectionString("DefaultConnection");
+      var connectionString = configuration.GetConnectionString("DevConnection");
 
       builder.UseMySql(connectionString);
 

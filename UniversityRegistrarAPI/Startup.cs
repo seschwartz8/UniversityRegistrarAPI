@@ -16,7 +16,7 @@ namespace UniversityRegistrar
 {
   public class Startup
   {
-    public IConfiguration Configuration { get; set; }
+    public IConfiguration Configuration { get; }
 
     public Startup(IConfiguration configuration)
     {
@@ -47,6 +47,8 @@ namespace UniversityRegistrar
       }
 
       app.UseRouting();
+
+      app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>
       {
