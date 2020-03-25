@@ -1,6 +1,6 @@
-# University Registrar
+# University Registrar API and React App
 
-#### C#/.NET MVC website that allows students and administrators to keep records on courses and student enrollment.
+#### React website with C# API that allows students and administrators to keep records on courses and student enrollment.
 
 #### By Sarah "Sasa" Schwartz, Andrew Philpott
 
@@ -20,8 +20,10 @@
 <details>
   <summary>WHAT WE WORKED ON 03.25.20</summary>
   
-  - Convert C# project to API with React front end
-  - 
+  - Convert C# project to web API to allow access to database from React front end
+  - Debugging 
+  - Get React front end to show all students on /students page
+  - Create form for creating student, which successfully posted a student but still has a bug that sets all the properties to null
 </details>
 
 <details>
@@ -47,7 +49,7 @@
 
 ## Description
 
-C#/.NET MVC website that allows students and administrators to keep records on courses and student enrollment. This application allows you to create students and courses, and adjust student enrollment in each course. The website will prompt you to register an account and log in to view students and courses. Based on your identity (registrar vs. student vs. admin) you will be authorized to complete different tasks on the site. This project focuses on using .NET Core MVC, Authentication, Authorization, SQL databases/Migration, and one-to-many/many-to-many design for databases.
+React website with C# API that allows students and administrators to keep records on courses and student enrollment.
 
 ## Installation Requirements
 
@@ -60,7 +62,11 @@ C#/.NET MVC website that allows students and administrators to keep records on c
   - \$dotnet ef migrations add Initial
   - \$dotnet ef database update
 - \$dotnet run
-- The app should be hosted on http://localhost:5000/
+- The server for the data should be hosted on http://localhost:5000/
+- Change directory to the university-registrar directory, within the UniversityRegistrar.Solution
+- \$npm i
+- \$npm start
+- The server to interact with the app should be hosted on http://localhost:3000/
 - Use the app at this URL in the browser!
 
 ## User Stories
@@ -77,7 +83,7 @@ C#/.NET MVC website that allows students and administrators to keep records on c
 
 ## Known Bugs
 
-- No known bugs
+- This app is still in progress
 
 ## Technologies Used
 
@@ -87,21 +93,3 @@ C#/.NET MVC website that allows students and administrators to keep records on c
 ### License
 
 - This software is licensed under the MIT license.
-
-Authorization
-
-Administrator
--Add and remove departments
--Assign different Registrars to be responsible for different student levels??? (freshmen, sophomore...)
-
-Registrar
--Add or remove students to different courses
-
-Student
--"Wishlist" of the courses they want to be in
--Declare their major
--Add or remove
-
-Parking lot
--Student maximum in each course
--Different views of pages for different users (e.g. Student edit looks different to student vs registrar)
