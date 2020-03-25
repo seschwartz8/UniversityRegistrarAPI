@@ -26,6 +26,5 @@ namespace UniversityRegistrar.Models
         public virtual Department Department { get; set; }
 
         public virtual ICollection<CourseStudent> Courses { get; set; }
-        public virtual ApplicationUser User { get; set; }
     }
 }

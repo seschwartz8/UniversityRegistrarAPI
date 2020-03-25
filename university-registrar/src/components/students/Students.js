@@ -12,7 +12,11 @@ const Students = props => {
 
   const renderStudentList = () => {
     const studentListHTML = props.studentList.map(student => {
-      return <p>{student.Name}</p>;
+      return (
+        <p>
+          {student.name} was enrolled {student.enrollmentDate}
+        </p>
+      );
     });
     return studentListHTML;
   };
